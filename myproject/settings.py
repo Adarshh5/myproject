@@ -15,7 +15,7 @@ SECRET_KEY =os.getenv('SECRET_KEY')
 
 DEBUG =os.getenv('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -67,18 +67,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': "productiondatabase_gxps",
-#         'USER': "productiondatabase_gxps_user",
-#         'PASSWORD': "D31Bl32y7s5IF52V7jc3uCQLJXGvnqV2",
-#         'HOST':"dpg-d1f5koili9vc739khp90-a.singapore-postgres.render.com",  # 'db' = service name in docker-compose
-#         'PORT': '5432',
-#     }
-# }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",  # Use PostgreSQL
@@ -93,12 +82,7 @@ DATABASES = {
 
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+
 
 
 # Password validation

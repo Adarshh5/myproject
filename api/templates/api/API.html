@@ -1,0 +1,35 @@
+{% extends 'pay/base.html' %}
+{% load static %}
+{% block main-content %}
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 m-5 col-12">
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                {{ form.account.label_tag }}
+                {{ form.account }}
+                {% if form.account.errors %}
+                    <ul class="text-danger">
+                        {% for error in form.account.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            {% if not error %}
+              <button type="submit" class="btn btn-primary w-100 my-2">Next</button>
+            {% endif %}
+            {% if error %}
+                <div class="alert alert-danger mt-3">{{ error }}</div>
+            {% endif %}
+        </form>
+    </div>
+    
+    
+     
+    </div>
+</div>
+
+{% endblock main-content %}

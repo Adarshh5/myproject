@@ -1,0 +1,9 @@
+@media (max-width: 663px) {
+    .col-12 .word_image {
+        height:100px;
+        width:100px;
+    }
+    .col-12 h5 {
+       font-size:16px;
+    }
+}

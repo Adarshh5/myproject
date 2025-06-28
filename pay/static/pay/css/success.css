@@ -1,0 +1,48 @@
+.checkmark {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background-color: #28a745;
+    position: relative;
+    animation: popIn 0.6s ease-out;
+}
+
+.checkmark::after {
+    content: "";
+    width: 15px;
+    height: 30px;
+    border: solid #fff;
+    border-width: 0 6px 6px 0;
+    display: inline-block;
+    transform: rotate(45deg);
+    animation: checkmark 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes checkmark {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(45deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(45deg);
+    }
+}

@@ -1,0 +1,31 @@
+{% extends 'pay/base.html' %}
+{% load static %}
+
+{% block main-content %}
+<div class="container">
+    <div class="row">
+            {% for acc in account %}
+                <div class="col-12 col-md-6  m-2 p-4 g-2 shadow">
+                    <h2>{{acc.name}}</h2>
+                    <h5>Account Number - {{acc.Account_number}}</h5>
+                    <h5>Phone Number - {{acc.Phone_number}}</h5>
+                    <h5>UPI ID - {{acc.upi_id}}</h5>
+                    <div class="d-flex justify-content-start flex-wrap">
+                        <form method="post" class="mb-2 me-1">
+                            {% csrf_token %}
+                            <input type="hidden" name="account_id" value="{{ acc.id }}">
+                            <button type="submit" class="btn btn-primary">Check Balance</button>
+                        </form>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="account_id_for_TH" value="{{ acc.id }}">
+                            <button type="submit" class="btn btn-primary">Transection History</button>
+                        </form>
+                   </div>
+                    
+                </div>
+            {% endfor %}
+
+    </div>
+</div>
+{% endblock main-content %}

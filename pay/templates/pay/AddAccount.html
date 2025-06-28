@@ -1,0 +1,35 @@
+{% extends 'pay/base.html/' %}
+{% load static %}
+
+{% block main-content %}
+<h3>Add Account page</h3>
+<section class="container-fluid">
+    <div class="container">
+        <div class="row justify-content-center">
+           <div class="col-md-6 shadow-sm">
+            <h3>Add Account</h3>
+            <form class="" method="post">
+                {% csrf_token %}
+                {% for fm in form %}
+                <div class="form-group mb-3">
+                    {{fm.label_tag}} {{fm}} <small class="text-denger">{{fm.errors|striptags}}</small>
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary w-100 mb-2">next</button>
+                {% if form.errors %}
+                    <ul>
+                        {% for field, errors in form.errors.items %}
+                            {% for error in errors %}
+                                <li class="text-danger">{{ field }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+               {% endif %}
+            
+            </form>
+           </div>
+        </div>
+    </div>
+</section>
+{% endblock main-content %}
+

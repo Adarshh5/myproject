@@ -1,0 +1,15 @@
+{% extends 'pay/base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'api/css/APISection.css' %}">
+{% endblock %}
+{% block main-content %} 
+<h1 class="text-center my-4">API Section</h1>
+
+<div class="container">
+    <div>{{token}}</div>
+   
+   
+    
+
+{% endblock main-content %}

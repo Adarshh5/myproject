@@ -1,0 +1,72 @@
+{% extends 'pay/base.html' %}
+{% load static %}
+
+{% block main-content %}
+<section class="container-fluid">
+    <div class="container">
+        <div class="row">
+            {% if request.user.is_authenticated %}
+                <div class="col-12 shadow-sm my-5 py-2">
+                    <h3>Make a Payment</h3>
+                    <div>
+                        <form class="" method="post">
+                            {% csrf_token %}
+                            {% for fm in form %}
+                            <div class="form-group mb-2">
+                                {{fm.label_tag}} {{fm}} <small class="text-denger">{{fm.errors|striptags}}</small>
+                            </div>
+                            {% endfor %}
+                            <button type="Submit" class="btn btn-primary w-100 my-2">Next</button>
+                            {% if form.errors %}
+                                <ul>
+                                    {% for field, errors in form.errors.items %}
+                                        {% for error in errors %}
+                                            <li class="text-danger">{{ field }}: {{ error }}</li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            {% if msg %}
+                              <p class="text-info bg-dark"> {{msg}}</p>
+                              <a href="{% url 'AddAccount' %}" class="btn btn-primary">Add Account</a>
+                            {% endif %}
+                        </form>
+                    </div>
+
+                </div>
+                <div class="col-12 shadow-sm my-5 py-2">
+                    <h3>Mobile Recharge</h3>
+                    <div>
+                        <form class="" method="post" action="{% url 'MobileRecharge' %}">
+                            {% csrf_token %}
+                            {% for fm in RechargeForm %}
+                            <div class="form-group mb-2">
+                                {{fm.label_tag}} {{fm}} <small class="text-denger">{{fm.errors|striptags}}</small>
+                            </div>
+                            {% endfor %}
+                            <button type="Submit" class="btn btn-primary w-100 my-2">Next</button>
+                            {% if RechargeForm.errors %}
+                                <ul>
+                                    {% for field, errors in RechargeForm.errors.items %}
+                                        {% for error in errors %}
+                                            <li class="text-danger">{{ field }}: {{ error }}</li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            {% if msg %}
+                              <p class="text-info bg-dark"> {{msg}}</p>
+                              <a href="{% url 'AddAccount' %}" class="btn btn-primary">Add Account</a>
+                            {% endif %}
+                        </form>
+                    </div>
+
+                </div>
+            {% else %}
+            <h3>Login First </h3>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock main-content %}

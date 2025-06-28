@@ -1,0 +1,20 @@
+{% extends 'pay/base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'pay/css/success.css' %}">
+{% endblock %}
+{% block main-content %}
+<div class="container text-center py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="checkmark"></div>
+            <h1 class="mt-4 text-success">Success!</h1>
+            <p class="lead">Your account has been added successfully.</p>
+            <div class="mt-4">
+                <a href="{% url 'home' %}" class="btn btn-primary me-2">Go to Dashboard</a>
+                <a href="{% url 'AddAccount' %}" class="btn btn-outline-secondary">Add Another Account</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

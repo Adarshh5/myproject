@@ -1,0 +1,25 @@
+{% extends 'pay/base.html' %}
+{% load static %}
+
+{% block main-content %}
+<div class="container">
+    <div class="row">
+        <div class='col-12 col-sm-4 mt-5' >
+            <form class="", method="post">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" name="password" placeholder="Enter password" >
+                    <button class="btn btn-outline-secondary" type="Submit">check</button>
+                </div>  
+            </form>
+            {% if error %}
+               <div class="alert alert-danger mt-3">{{ error }}</div>
+            {% endif %}
+            {% if amount %}
+               <h3>Total Amount: {{ amount }}</h3>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock main-content%}
